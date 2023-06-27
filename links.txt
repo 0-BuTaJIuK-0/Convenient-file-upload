@@ -1,0 +1,12 @@
+https://cdn.cloudflare.steamstatic.com/client/installer/SteamSetup.exe
+https://faceit-client.faceit-cdn.net/release/FACEIT-setup-latest.exe
+https://anticheat-client.faceit-cdn.net/FACEITInstaller_64.exe
+https://static.gc.vkplay.ru/VKPlayLoader.exe
+https://eu.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe
+https://valorant.secure.dyn.riotcdn.net/channels/public/x/installer/current/live.live.eu.exe
+https://lol.secure.dyn.riotcdn.net/channels/public/x/installer/current/live.ru.exe
+https://static3.cdn.ubi.com/orbit/launcher_installer/UbisoftConnectInstaller.exe
+https://origin-a.akamaihd.net/EA-Desktop-Client-Download/installer-releases/EAappInstaller.exe
+https://epicgames-download1.akamaized.net/Builds/UnrealEngineLauncher/Installers/Win32/EpicInstaller-15.7.0.msi?launcherfilename=EpicInstaller-15.7.0.msi
+https://dl.discordapp.net/distro/app/stable/win/x86/1.0.9013/DiscordSetup.exe
+https://lds.lesta.ru/lgc/prod/lgc_23.02.01.0243_ru/lesta_game_center_install_ru.exe
