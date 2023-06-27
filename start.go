@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"mime"
 	"net/http"
 	"os"
 	"strings"
@@ -28,6 +29,16 @@ func main() {
 		}
 		defer fileResp.Body.Close()
 
+		filename := getFilename(link)
+		if contentDisposition := fileResp.Header.Get("Content-Disposition"); contentDisposition != "" {
+			_, params, err := mime.ParseMediaType(contentDisposition)
+			if err == nil {
+				if filenameFromHeader, ok := params["filename"]; ok {
+					filename = filenameFromHeader
+				}
+			}
+		}
+
 		if _, err := os.Stat("Download/"); os.IsNotExist(err) {
 			errDir := os.MkdirAll("Download/", 0755)
 			if errDir != nil {
@@ -35,7 +46,6 @@ func main() {
 			}
 		}
 
-		filename := getFilename(link)
 		file, err := os.Create("Download/" + filename)
 		if err != nil {
 			panic(err)
@@ -56,12 +66,6 @@ func main() {
 	}
 }
 
-func getFilename(path string) string {
-	parts := strings.Split(path, "/")
-	filename := strings.Split(parts[len(parts)-1], "?")[0]
-	return filename
-}
-
 type ReaderWithProgress struct {
 	reader io.Reader
 	size   int64
@@ -77,4 +81,13 @@ func (r *ReaderWithProgress) Read(p []byte) (n int, err error) {
 		fmt.Printf("\rDownloading %s/%s", humanize.Bytes(uint64(r.total)), humanize.Bytes(uint64(r.size)))
 	}
 	return
+}
+
+func getFilename(path string) string {
+	parts := strings.Split(path, "/")
+	filename := strings.Split(parts[len(parts)-1], "?")[0]
+	if len(filename) == 0 {
+		filename = parts[len(parts)-2] + ".exe"
+	}
+	return filename
 }
