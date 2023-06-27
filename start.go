@@ -58,7 +58,7 @@ func main() {
 			fmt.Println(size)
 			panic(err)
 		}
-		fmt.Printf("\n")
+		fmt.Printf("\n\n")
 	}
 
 	if err := scanner.Err(); err != nil {
